@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>ClairPrev - PrevIT</title>
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+</head>
+<body>
+<div class="container">
+		<h1>ClairPrev Prévoyance - Liste des contrats de l'assuré</h1>
+	
+	<label th:text=${assureSelect.numeroAssure}></label>
+	
+		<div class="row">
+						
+			<table class="table">
+				<thead>
+					<tr>
+						
+						<th th:text="NumeroProduit"></th>
+						<th th:text="Libelle"></th>
+					</tr>
+				</thead>
+				<tbody>
+					<tr th:each="produit : ${produits}" class="col-md-4 my-1">
+						
+						
+						<td> <a 
+						th:href="@{|/affecterNumeroProduit/${assureSelect.numeroAssure}/${produit.numeroProduit}|}"
+						th:text="${produit.numeroProduit}"></a></td>
+						<td th:text="${produit.libelle}"></td>
+
+					</tr>
+				</tbody>
+			</table>
+			</div>
+			</div>
+			
+<!-- 			<div class="col-md-4 mx-auto mt-5 text-center"> -->
+		
+<!-- 			<form th:action="@{/saisir-contrat}" th:object="${contratBean}" -->
+<!-- 				method="POST"> -->
+<!-- 				Numero contrat :<input type="text" th:field="*{numeroContrat}" /> <br />  -->
+<!-- 				Numero produit :<input	type="text" th:field="*{numeroProduit}" /> <br />  -->
+<!-- 				<input type="submit" value="Valider" /> -->
+<!-- 			</form> -->
+<!-- 			</div> -->
+			<script type="text/javascript"
+		src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+</body>
+</html>

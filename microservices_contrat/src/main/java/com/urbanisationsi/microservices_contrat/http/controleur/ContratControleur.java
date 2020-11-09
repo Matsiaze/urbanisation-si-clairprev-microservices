@@ -1,6 +1,7 @@
 package com.urbanisationsi.microservices_contrat.http.controleur;
 
 import java.net.URI;
+import java.time.LocalDate;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -8,6 +9,7 @@ import java.util.stream.Collectors;
 import java.util.stream.StreamSupport;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -116,6 +118,37 @@ public class ContratControleur {
 		
 		if (result.size()==0) throw new ContratIntrouvableException(String.format("Aucun contrat ne possede le numero de produit: %d", numeroProduit));
 		return result;
+	}
+	
+	@GetMapping(path="/contrat/{numeroAssure}/{numeroProduit}")
+	public ResponseEntity<Contrat> affecterNumeroProduit(@PathVariable Long numeroAssure, @PathVariable Long numeroProduit){
+		
+		List<Contrat> result= contratRepository.findByNumeroAssure(numeroAssure);
+		
+		Contrat contrat = result.get(0);
+		
+		contrat.setNumeroProduit(numeroProduit);
+		contrat = contratRepository.save(contrat);
+		
+	//	if (result.size()==0) throw new ContratIntrouvableException(String.format("Aucun contrat ne possede le numero de produit: %d", numeroProduit));
+		return new ResponseEntity<Contrat>(contrat, HttpStatus.CREATED);
+	}
+	
+	@GetMapping(path="/contrat/finaliserContrat/{numeroAssure}/{numeroContrat}/{dateDebut}")
+	public ResponseEntity<Contrat> finaliserContrat(@PathVariable Long numeroAssure, @PathVariable Long numeroContrat, @PathVariable String dateDebut){
+		
+		List<Contrat> result= contratRepository.findByNumeroAssure(numeroAssure);
+		
+		Contrat contrat = result.get(0);
+		contrat.setNumeroContrat(numeroContrat);
+		
+		LocalDate date = LocalDate.parse(dateDebut);
+		contrat.setDateDebut(date);
+		
+		contrat= contratRepository.save(contrat);
+		
+
+		return new ResponseEntity<Contrat>(contrat, HttpStatus.CREATED);
 	}
 	
 	@DeleteMapping(path = "/Contrat/{id}")

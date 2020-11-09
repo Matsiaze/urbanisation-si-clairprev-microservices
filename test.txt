@@ -1,1 +1,9 @@
-Commit manuel
+To commit cmd
+
+git
+git add .
+git commit -m "nomDuCommit"
+git push -u origin master
+
+//
+git pull cheminRepo

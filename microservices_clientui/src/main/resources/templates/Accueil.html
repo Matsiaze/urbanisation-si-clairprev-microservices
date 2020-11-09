@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+<meta charset="UTF-8" />
+<title>ClairPrev - PrevIT</title>
+<link rel="stylesheet" type="text/css"
+	href="webjars/bootstrap/4.0.0-2/css/bootstrap.min.css" />
+</head>
+<body>
+	<div class="container">
+		<h1>ClairPrev Prévoyance - Rechercher un assuré</h1>
+
+<!-- 		<div class="row"> -->
+<!-- 			<table class="table"> -->
+<!-- 				<thead> -->
+<!-- 					<tr> -->
+<!-- 						<th th:text="Prenom"></th> -->
+<!-- 						<th th:text="Nom"></th> -->
+<!-- 						<th th:text="NumeroAssure"></th> -->
+<!-- 					</tr> -->
+<!-- 				</thead> -->
+<!-- 				<tbody> -->
+<!-- 					<tr th:each="assure : ${assures}" class="col-md-4 my-1"> -->
+<!-- 						<td th:text="${assure.prenom}"></td> -->
+<!-- 						<td th:text="${assure.nom}"></td> -->
+<!-- 						<td th:text="${assure.numeroAssure}"></td> -->
+
+
+<!-- 					</tr> -->
+<!-- 				</tbody> -->
+<!-- 			</table> -->
+<!-- 			</div> -->
+			</div>
+			
+			<div class="col-md-4 mx-auto mt-5 text-center">
+		
+			<form th:action="@{/saisir-assure}" th:object="${assureBean}"
+				method="POST">
+				Nom :<input type="text" th:field="*{nom}" /> <br /> 
+				Prenom :<input	type="text" th:field="*{prenom}" /> <br /> 
+				<input type="submit" value="Valider" />
+			</form>
+			
+			
+		
+		</div>
+		
+
+			<script type="text/javascript"
+				src="webjars/bootstrap/4.0.0-2/js/bootstrap.min.js"></script>
+</body>
+</html>
