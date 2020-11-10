@@ -2,6 +2,7 @@ package com.urbanisationsi.microservices_clientui.proxies;
 
 import java.util.List;
 
+import org.springframework.cloud.netflix.ribbon.RibbonClient;
 import org.springframework.cloud.openfeign.FeignClient;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -9,7 +10,10 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.urbanisationsi.microservices_clientui.beans.AssureBean;
 
 
-@FeignClient(name="microservice-assure", url="localhost:9999")
+@FeignClient(name="microservice-assure"
+//, url="localhost:9999"
+)
+@RibbonClient(name="microservice-assure")
 public interface MicroserviceAssureProxy  {
 	
 	@GetMapping(path="/previt/listerLesAssures")
