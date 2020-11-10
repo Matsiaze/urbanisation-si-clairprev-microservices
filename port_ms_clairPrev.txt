@@ -1,0 +1,6 @@
+Assure:9999
+Produit:9998
+Contrat:9997
+Client:8080
+Config-Server:9800
+Eureka-Server:9801
