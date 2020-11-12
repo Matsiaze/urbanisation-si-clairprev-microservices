@@ -1,0 +1,24 @@
+To commit cmd
+
+git
+git add .
+git commit -m "nomDuCommit"
+git push -u origin master
+
+//
+git pull cheminRepo
+
+//************ MY NOTES*************
+When securising ZUUL, dependency:
+
+<dependency>
+<groupId>org.springframework.cloud</groupId>
+<artifactId>spring-cloud-starter-security</artifactId>
+</dependency>
+
+was not enough; I add to add this, according to SpringB doc:
+
+<dependency>
+<groupId>org.springframework.boot</groupId>
+<artifactId>spring-boot-starter-security</artifactId>
+</dependency>
