@@ -9,15 +9,15 @@ import org.springframework.web.bind.annotation.PathVariable;
 
 import com.urbanisationsi.microservices_clientui.beans.ProduitBean;
 
-@FeignClient(name = "microservice-produit"
+@FeignClient(name = "zuul-server"
 //, url = "localhost:9998"
 )
 @RibbonClient(name="microservice-produit")
 public interface MicroserviceProduitProxy {
 
-	@GetMapping(path = "previt/produit/numero/{numeroProduit}")
+	@GetMapping(path = "microservice-produit/previt/produit/numero/{numeroProduit}")
 	public List<ProduitBean> rechercherProduitParNumero(@PathVariable Long numeroProduit);
 	
-	@GetMapping(path = "previt/listerLesProduits")
+	@GetMapping(path = "microservice-produit/previt/listerLesProduits")
 	public List<ProduitBean> getAllProduits();
 }

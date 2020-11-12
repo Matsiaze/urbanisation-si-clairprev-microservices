@@ -10,19 +10,19 @@ import org.springframework.web.bind.annotation.PathVariable;
 import com.urbanisationsi.microservices_clientui.beans.AssureBean;
 
 
-@FeignClient(name="microservice-assure"
+@FeignClient(name="zuul-server", decode404 = true
 //, url="localhost:9999"
 )
 @RibbonClient(name="microservice-assure")
 public interface MicroserviceAssureProxy  {
 	
-	@GetMapping(path="/previt/listerLesAssures")
+	@GetMapping(path="microservice-assure/previt/listerLesAssures")
 	public List<AssureBean> getAllAssures() ;
 	
-	@GetMapping(path="/previt/Assure/nomPrenom/{nom}/{prenom}")
+	@GetMapping(path="microservice-assure/previt/Assure/nomPrenom/{nom}/{prenom}")
 	public List<AssureBean> rechercheAssureParNomPrenom(@PathVariable String nom, @PathVariable String prenom);
 	
-	@GetMapping(path="/previt/Assure/numeroAssure/{numeroAssure}")
+	@GetMapping(path="microservice-assure/previt/Assure/numeroAssure/{numeroAssure}")
 	public List<AssureBean> findbyNumeroAssure(@PathVariable Long numeroAssure);
 
 	
