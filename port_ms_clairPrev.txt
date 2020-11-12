@@ -4,3 +4,4 @@ Contrat:9997
 Client:8080
 Config-Server:9800
 Eureka-Server:9801
+Zuul-Server:9802
