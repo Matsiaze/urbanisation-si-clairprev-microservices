@@ -14,6 +14,8 @@ import javax.validation.Valid;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.actuate.health.Health;
+import org.springframework.boot.actuate.health.HealthIndicator;
 import org.springframework.http.ResponseEntity;
 import org.springframework.http.converter.json.MappingJacksonValue;
 import org.springframework.web.bind.annotation.DeleteMapping;
@@ -41,7 +43,7 @@ import io.swagger.annotations.Api;
 @RestController // et pas @Controller sinon ne traduit pas les retours des objets Java en JSON
 @RequestMapping(path = "/previt")
 
-public class AssureControleur {
+public class AssureControleur implements HealthIndicator {
 	
 
 	@Autowired
@@ -52,6 +54,11 @@ public class AssureControleur {
 
 	Logger log = LoggerFactory.getLogger(this.getClass());
 
+	@Override
+	public Health health() {
+		// TODO Auto-generated method stub
+		return Health.down().build();
+	}
 	@PostMapping(path = "/ajouterAssure")
 	public ResponseEntity<Void> creerAssure(@Valid @RequestBody Assure assure) {
 		
@@ -190,5 +197,7 @@ public class AssureControleur {
 		assuresFiltres.setFilters(listeFiltres);
 		return assuresFiltres;
 	}
+
+	
 	
 }
