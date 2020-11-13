@@ -48,6 +48,20 @@
 		</dependency>
 		<!-- Fin ajout -->
 	
+	<!-- Ajout de Sleuth gérer la traçabilité des requêtes -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<!-- Fin ajout -->
+		
+		<!-- Ajout de Zipkin pour que nos ms s'enregistrent en trace sur Zipkin: monitoring -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+	<!-- Fin ajout -->
+	
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
 			<artifactId>spring-boot-starter-data-jpa</artifactId>

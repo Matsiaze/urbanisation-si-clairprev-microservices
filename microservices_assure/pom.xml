@@ -21,6 +21,7 @@
 	</properties>
 
 	<dependencies>
+	
 		<!-- Ajout de dependances pour que le ms assure se connecte au server -->
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
@@ -39,12 +40,27 @@
 		</dependency>
 
 		<!-- Fin ajout -->
+		
 		<!-- Ajout pour enregistrement -->
 		<dependency>
 			<groupId>org.springframework.cloud</groupId>
 			<artifactId>spring-cloud-starter-netflix-eureka-server</artifactId>
 		</dependency>
 		<!-- Fin ajout -->
+		
+		<!-- Ajout de Sleuth gérer la traçabilité des requêtes -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-starter-sleuth</artifactId>
+		</dependency>
+		<!-- Fin ajout -->
+		
+		<!-- Ajout de Zipkin pour que nos ms s'enregistrent sur Zipkin -->
+		<dependency>
+			<groupId>org.springframework.cloud</groupId>
+			<artifactId>spring-cloud-sleuth-zipkin</artifactId>
+		</dependency>
+	<!-- Fin ajout -->
 		
 		<dependency>
 			<groupId>org.springframework.boot</groupId>
